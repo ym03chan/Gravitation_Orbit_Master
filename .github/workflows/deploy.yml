@@ -18,6 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: "Activities/Gravitation Orbit Master/orbit-master-return-base-v2"
+
     steps:
       - name: Download repository
         uses: actions/checkout@v6
@@ -27,6 +31,7 @@ jobs:
         with:
           node-version: "22.13.0"
           cache: npm
+          cache-dependency-path: "Activities/Gravitation Orbit Master/orbit-master-return-base-v2/package-lock.json"
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -45,7 +50,7 @@ jobs:
       - name: Upload website
         uses: actions/upload-pages-artifact@v4
         with:
-          path: out
+          path: "Activities/Gravitation Orbit Master/orbit-master-return-base-v2/out"
 
   deploy:
     environment:
